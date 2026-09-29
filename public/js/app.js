@@ -33,6 +33,9 @@ const I18N = {
     'filter.search.ph': 'Search listings…',
     'filter.brand.all': 'All brands', 'filter.cond.all': 'Any condition',
     'cond.unworn': 'Unworn', 'cond.excellent': 'Excellent', 'cond.good': 'Good', 'cond.fair': 'Fair',
+    'cond.needs_service': 'Needs service',
+    'yes': 'Yes', 'no': 'No',
+    'form.box': 'Box', 'form.papers': 'Papers', 'listing.box': 'Box', 'listing.papers': 'Papers',
     'sort.new': 'Newest first', 'sort.price_asc': 'Price: low to high', 'sort.price_desc': 'Price: high to low',
     'browse.empty': 'No watches match your search yet.',
     'browse.count': '{n} watches',
@@ -179,6 +182,9 @@ const I18N = {
     'filter.search.ph': 'ابحث في الإعلانات…',
     'filter.brand.all': 'كل الماركات', 'filter.cond.all': 'أي حالة',
     'cond.unworn': 'جديدة', 'cond.excellent': 'ممتازة', 'cond.good': 'جيدة', 'cond.fair': 'مقبولة',
+    'cond.needs_service': 'تحتاج صيانة',
+    'yes': 'نعم', 'no': 'لا',
+    'form.box': 'العلبة', 'form.papers': 'الأوراق', 'listing.box': 'العلبة', 'listing.papers': 'الأوراق',
     'sort.new': 'الأحدث أولاً', 'sort.price_asc': 'السعر: من الأقل', 'sort.price_desc': 'السعر: من الأعلى',
     'browse.empty': 'لا ساعات تطابق بحثك بعد.',
     'browse.count': '{n} ساعة',
@@ -668,6 +674,8 @@ async function renderListing(root, id) {
             <div><dt>${t('listing.brand')}</dt><dd>${esc(l.brand)}</dd></div>
             ${l.year ? `<div><dt>${t('listing.year')}</dt><dd>${esc(l.year)}</dd></div>` : ''}
             <div><dt>${t('listing.condition')}</dt><dd>${t('cond.' + l.condition)}</dd></div>
+            <div><dt>${t('listing.box')}</dt><dd>${t(l.box ? 'yes' : 'no')}</dd></div>
+            <div><dt>${t('listing.papers')}</dt><dd>${t(l.papers ? 'yes' : 'no')}</dd></div>
             ${l.city ? `<div><dt>${t('listing.city')}</dt><dd>${esc(l.city)}</dd></div>` : ''}
             <div><dt>${t('listing.posted')}</dt><dd>${fmtDate(l.created_at)}</dd></div>
             <div><dt>${t('listing.id')}</dt><dd>${l.id}</dd></div>
@@ -856,6 +864,16 @@ async function renderSell(root, editId) {
             <select name="currency">${cfg.currencies.map(c => `<option ${existing && existing.currency === c ? 'selected' : c === 'AED' && !existing ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
           <div class="field"><label>${t('form.city')}</label>
             <select name="city">${(cfg.cities || []).map(c => `<option ${existing && existing.city === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+          <div class="field"><label>${t('form.box')}</label>
+            <select name="box">
+              <option value="1" ${existing && existing.box ? 'selected' : ''}>${t('yes')}</option>
+              <option value="0" ${existing && !existing.box ? 'selected' : ''}>${t('no')}</option>
+            </select></div>
+          <div class="field"><label>${t('form.papers')}</label>
+            <select name="papers">
+              <option value="1" ${existing && existing.papers ? 'selected' : ''}>${t('yes')}</option>
+              <option value="0" ${existing && !existing.papers ? 'selected' : ''}>${t('no')}</option>
+            </select></div>
           <div class="field" style="justify-content:end">
             <label class="check-line"><input type="checkbox" name="negotiable" ${!existing || existing.negotiable ? 'checked' : ''}> <span>${t('form.negotiable')}</span></label></div>
           <div class="field full"><label>${t('form.description')}</label>
@@ -908,6 +926,8 @@ async function renderSell(root, editId) {
       currency: fd.get('currency'), negotiable: fd.get('negotiable') ? 1 : 0,
       description: String(fd.get('description') || '').trim(),
       city: fd.get('city'),
+      box: fd.get('box') === '1' ? 1 : 0,
+      papers: fd.get('papers') === '1' ? 1 : 0,
     };
     if (!body.title || !body.price) { toast(t('err.generic'), true); return; }
     if (existingPhotos.length + sellPhotos.length === 0) { toast(t('sell.photos'), true); return; }

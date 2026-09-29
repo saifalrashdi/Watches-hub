@@ -6,7 +6,7 @@
 # (npm/cli#8974) — the included Dockerfile installs with pnpm instead.
 services:
   - type: web
-    name: org-luxury
+    name: watches-hub
     runtime: docker
     plan: free
     autoDeploy: true
@@ -17,6 +17,4 @@ services:
       - key: ADMIN_PASSWORD
         sync: false
       - key: SESSION_SECRET
-        sync: false
-      - key: WHATSAPP_NUMBER
         sync: false
