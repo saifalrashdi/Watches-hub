@@ -242,6 +242,8 @@ function validateListing(b) {
     negotiable: boolInt(b.negotiable),
     description: s(b.description, 2000),
     city: s(b.city, 40),
+    box: boolInt(b.box),
+    papers: boolInt(b.papers),
   };
   if (!l.title) return { error: 'Title is required' };
   if (!BRANDS.includes(l.brand)) return { error: 'Invalid brand' };
@@ -276,8 +278,8 @@ app.post('/api/listings', requireUser, (req, res) => {
   } catch (e) { return bad(res, 400, e.message); }
   if (photos.length === 0) return bad(res, 400, 'Add at least one photo');
   const info = db.prepare(`INSERT INTO listings
-    (user_id, title, brand, year, condition, price, currency, negotiable, description, photos, city)
-    VALUES (@user_id, @title, @brand, @year, @condition, @price, @currency, @negotiable, @description, @photos, @city)`)
+    (user_id, title, brand, year, condition, price, currency, negotiable, description, photos, city, box, papers)
+    VALUES (@user_id, @title, @brand, @year, @condition, @price, @currency, @negotiable, @description, @photos, @city, @box, @papers)`)
     .run({ ...l, user_id: req.user.id, photos: JSON.stringify(photos) });
   res.json({ ok: true, id: info.lastInsertRowid });
 });
@@ -312,7 +314,7 @@ app.patch('/api/listings/:id', requireUser, (req, res) => {
   const status = LISTING_STATUSES.includes(b.status) && b.status !== 'removed' ? b.status : existing.status;
   db.prepare(`UPDATE listings SET title=@title, brand=@brand, year=@year, condition=@condition,
     price=@price, currency=@currency, negotiable=@negotiable, description=@description,
-    photos=@photos, status=@status, city=@city WHERE id=@id`)
+    photos=@photos, status=@status, city=@city, box=@box, papers=@papers WHERE id=@id`)
     .run({ ...l, photos: JSON.stringify(photos), status, id });
   res.json({ ok: true });
 });
