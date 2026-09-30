@@ -8,8 +8,10 @@
   const C = {
     en: {
       title: 'Hub Assistant', sub: 'Always here — EN / عربي',
-      hello: 'Ahlan! I am the Watches Hub assistant. Ask me how to sell your watch, how offers and negotiation work, or name a brand and I will search the live listings.',
-      chips: ['How do I sell?', 'How do offers work?', 'Rolex', 'Is it free?', 'Safety tips'],
+      hello: 'Ahlan! I am the Watches Hub assistant. Ask me how to sell your watch, how offers and auctions work, or name a brand and I will search the live listings.',
+      chips: ['How do I sell?', 'How do auctions work?', 'How do offers work?', 'Rolex', 'Safety tips'],
+      auction: 'Auctions use Bid4U-style proxy bidding:\n• Enter the MAXIMUM you are willing to pay — not your first bid.\n• The system automatically bids the smallest step needed to keep you on top, and stops at your max. You often pay less than your maximum.\n• Outbid? You get a badge on My account → My bids, and you can raise your max.\n• A bid in the last 2 minutes extends the timer by 2 minutes — no sniping.\n• Bids are binding and cannot be retracted, and you cannot bid on your own listing.\n• Some auctions have a hidden reserve — if bidding ends below it, the seller reviews the high bid as an offer.',
+      auctionSell: 'To run an auction: on the Sell page choose Sale type = Auction, set a starting price, pick a duration (1, 3, 5 or 7 days) and optionally a hidden reserve. Buyers bid with a maximum and the system bids for them. Highest bid wins when the timer ends.',
       sell: 'Selling takes a minute:\n• Create a free account (top right).\n• Tap "Sell" in the menu.\n• Add photos, brand, year, condition and your price.\nYour watch goes live instantly and buyers can make offers or message you.',
       offers: 'Offers are how negotiation works here:\n• On any listing, tap "Make an offer" and name your price.\n• The seller sees it in their Offers inbox and can accept or reject.\n• You can track every offer you sent under My account → Offers sent.\nOne pending offer per listing — no spam bidding.',
       chat: 'Every listing has a "Message seller" button. It opens a private chat between you and the seller — only you two can read it. All your conversations live under My account → Messages.',
@@ -28,8 +30,10 @@
     },
     ar: {
       title: 'مساعد هب', sub: 'دائماً هنا — EN / عربي',
-      hello: 'أهلاً! أنا مساعد ووتشز هب. اسألني كيف تبيع ساعتك، كيف تعمل العروض والتفاوض، أو اذكر ماركة وسأبحث في الإعلانات الحالية.',
-      chips: ['كيف أبيع؟', 'كيف تعمل العروض؟', 'رولكس', 'هل هو مجاني؟', 'نصائح الأمان'],
+      hello: 'أهلاً! أنا مساعد ووتشز هب. اسألني كيف تبيع ساعتك، كيف تعمل العروض والمزادات، أو اذكر ماركة وسأبحث في الإعلانات الحالية.',
+      chips: ['كيف أبيع؟', 'كيف تعمل المزادات؟', 'كيف تعمل العروض؟', 'رولكس', 'نصائح الأمان'],
+      auction: 'المزادات تعمل بالمزايدة بالوكالة على طريقة Bid4U:\n• أدخل أقصى مبلغ مستعد لدفعه — وليس مزايدتك الأولى.\n• النظام يزايد تلقائياً بأصغر خطوة تُبقيك في الصدارة ويتوقف عند سقفك — غالباً تدفع أقل من سقفك.\n• تم تجاوزك؟ يظهر تنبيه في حسابي ← مزايداتي، ويمكنك رفع سقفك.\n• مزايدة في آخر دقيقتين تمدد المؤقت دقيقتين — لا خطف في اللحظة الأخيرة.\n• المزايدات ملزمة ولا تُسحب، ولا يمكنك المزايدة على إعلانك.\n• بعض المزادات لها سعر احتياطي مخفي — إن انتهت دونه، يراجع البائع أعلى مزايدة كعرض.',
+      auctionSell: 'لإقامة مزاد: في صفحة البيع اختر نوع البيع = مزاد، حدد السعر الافتتاحي، اختر المدة (١ أو ٣ أو ٥ أو ٧ أيام) واختيارياً سعراً احتياطياً مخفياً. يزايد المشترون بسقف أقصى والنظام يزايد عنهم. أعلى مزايدة تفوز عند انتهاء الوقت.',
       sell: 'البيع يستغرق دقيقة:\n• أنشئ حساباً مجانياً (أعلى الصفحة).\n• اضغط «بيع» في القائمة.\n• أضف الصور، الماركة، السنة، الحالة وسعرك.\nتظهر ساعتك فوراً ويمكن للمشترين تقديم عروض أو مراسلتك.',
       offers: 'العروض هي طريقة التفاوض هنا:\n• في أي إعلان، اضغط «قدّم عرضاً» وحدد سعرك.\n• يرى البائع العرض في صندوق العروض ويمكنه القبول أو الرفض.\n• تتابع كل عروضك المرسلة من حسابي ← العروض المرسلة.\nعرض واحد معلّق لكل إعلان — بلا مزايدات مزعجة.',
       chat: 'كل إعلان فيه زر «راسل البائع». يفتح محادثة خاصة بينك وبين البائع — لا يقرأها غيركما. كل محادثاتك تجدها في حسابي ← الرسائل.',
@@ -135,6 +139,7 @@
 
   const KEYWORDS = {
     sell: ['sell', 'selling', 'post', 'list', 'listing', 'advertise', 'بيع', 'بيع', 'انشر', 'اعلن', 'اعلان', 'اضف'],
+    auction: ['auction', 'auctions', 'bidding', 'bid4u', 'bids', 'reserve', 'مزاد', 'مزادات', 'مزايده', 'زايد', 'احتياطي'],
     offers: ['offer', 'offers', 'negotiate', 'negotiation', 'bid', 'price', 'discount', 'عرض', 'عروض', 'تفاوض', 'فاوض', 'سوم', 'خصم', 'سعر'],
     chat: ['chat', 'message', 'messages', 'contact', 'talk', 'محادثه', 'رساله', 'رسائل', 'كلم', 'تواصل'],
     account: ['account', 'register', 'signup', 'sign', 'login', 'password', 'حساب', 'تسجيل', 'دخول', 'كلمه', 'انشئ'],
@@ -155,6 +160,8 @@
     const has = list => words.some(w => list.includes(w) || list.includes(singular(w)));
 
     if (has(KEYWORDS.greet) && words.length <= 3) return botReply(esc(s('hello')));
+    if (has(KEYWORDS.sell) && has(KEYWORDS.auction)) return botReply(esc(s('auctionSell')).replace(/\n/g, '<br>') + `<br><br><a href="#/sell">${esc(lang() === 'ar' ? 'ابدأ البيع' : 'Start selling')}</a>`);
+    if (has(KEYWORDS.auction)) return botReply(esc(s('auction')).replace(/\n/g, '<br>') + `<br><br><a href="#/browse?sort=ending_soon">${esc(lang() === 'ar' ? 'مزادات تنتهي قريباً' : 'Auctions ending soon')}</a>`);
     if (has(KEYWORDS.sell)) return botReply(esc(s('sell')).replace(/\n/g, '<br>') + `<br><br><a href="#/sell">${esc(lang() === 'ar' ? 'ابدأ البيع' : 'Start selling')}</a>`);
     if (has(KEYWORDS.offers)) return botReply(esc(s('offers')).replace(/\n/g, '<br>'));
     if (has(KEYWORDS.chat)) return botReply(esc(s('chat')).replace(/\n/g, '<br>'));

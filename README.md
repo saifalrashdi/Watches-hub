@@ -18,6 +18,16 @@ hash routing.
 - Negotiation offers: buyers name their price on any listing; sellers answer
   from a separate offers inbox (accept / reject), buyers track and withdraw
   from "Offers sent". One pending offer per listing — no spam bidding
+- Timed auctions with Bid4U-style proxy bidding (AutoBidMaster workflow):
+  sellers pick Sale type = Auction, set a starting price, duration (1/3/5/7
+  days) and an optional hidden reserve; buyers enter a MAXIMUM bid and the
+  system auto-bids the smallest increment needed to keep them on top — you
+  often win below your max. Outbid badge on My bids, live countdown, public
+  bid history with masked names, anti-sniping (a bid in the last 2 minutes
+  extends the clock by 2 minutes), binding bids, no bidding on your own
+  listing. Reserve not met at the end → the seller reviews the high bid as a
+  regular offer ("On Minimum Bid" style); reserve met → the high bidder wins
+  and the watch is marked sold
 - Private buyer–seller chat per listing, with unread badges, 4-second live
   polling and a listing context bar inside each thread
 - Favorites: heart on every card and listing page, saved under My account →
@@ -47,7 +57,8 @@ hash routing.
 - Node.js 22 + Express 4.21 + better-sqlite3 (exact pins, no other deps)
 - Vanilla HTML/CSS/JS SPA, hash routing, no build step
 - SQLite database at `data/watcheshub.db` — created and seeded on first run
-  (3 demo users, 14 listings, 1 offer, 1 conversation)
+  (3 demo users, 14 fixed-price listings + 2 live demo auctions with bid
+  history, 1 offer, 1 conversation)
 - Lightweight migrations: `PRAGMA table_info` + conditional `ALTER TABLE`
 - Photos uploaded as base64 → saved to `public/images/listings/`
 

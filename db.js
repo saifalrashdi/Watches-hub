@@ -96,11 +96,36 @@ CREATE TABLE IF NOT EXISTS reports (
   created_at  TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+-- AutoBidMaster-style proxy (Bid4U) bidding: one row per bidder per auction
+-- holding their MAXIMUM bid; the public price is derived incrementally.
+CREATE TABLE IF NOT EXISTS bids (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  listing_id  INTEGER NOT NULL REFERENCES listings(id),
+  bidder_id   INTEGER NOT NULL REFERENCES users(id),
+  max_amount  REAL NOT NULL,
+  created_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at  TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (listing_id, bidder_id)
+);
+
+-- public bid history: each visible step of the proxy battle
+CREATE TABLE IF NOT EXISTS bid_events (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  listing_id INTEGER NOT NULL REFERENCES listings(id),
+  bidder_id  INTEGER NOT NULL REFERENCES users(id),
+  amount     REAL NOT NULL,
+  kind       TEXT NOT NULL DEFAULT 'bid',  -- bid | auto (Bid4U counter) | extend
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE INDEX IF NOT EXISTS idx_listings_status ON listings(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_offers_listing ON offers(listing_id);
 CREATE INDEX IF NOT EXISTS idx_offers_buyer ON offers(buyer_id);
 CREATE INDEX IF NOT EXISTS idx_messages_conv ON messages(conversation_id, id);
 CREATE INDEX IF NOT EXISTS idx_favorites_user ON favorites(user_id);
+CREATE INDEX IF NOT EXISTS idx_bids_listing ON bids(listing_id);
+CREATE INDEX IF NOT EXISTS idx_bids_bidder ON bids(bidder_id);
+CREATE INDEX IF NOT EXISTS idx_bid_events_listing ON bid_events(listing_id, id);
 `);
 
 /* ------------------------------------------------------------------ */
@@ -121,6 +146,14 @@ ensureColumn('offers', 'updated_at', "updated_at TEXT NOT NULL DEFAULT (datetime
 ensureColumn('listings', 'city', "city TEXT NOT NULL DEFAULT ''");
 ensureColumn('listings', 'box', 'box INTEGER NOT NULL DEFAULT 0');
 ensureColumn('listings', 'papers', 'papers INTEGER NOT NULL DEFAULT 0');
+// auction columns (AutoBidMaster-style workflow)
+ensureColumn('listings', 'sale_type', "sale_type TEXT NOT NULL DEFAULT 'fixed'");      // fixed | auction
+ensureColumn('listings', 'auction_ends_at', "auction_ends_at TEXT NOT NULL DEFAULT ''");
+ensureColumn('listings', 'reserve_price', 'reserve_price REAL NOT NULL DEFAULT 0');     // 0 = no reserve
+ensureColumn('listings', 'auction_winner_id', 'auction_winner_id INTEGER NOT NULL DEFAULT 0');
+ensureColumn('listings', 'sold_price', 'sold_price REAL NOT NULL DEFAULT 0');
+ensureColumn('listings', 'auction_settled', 'auction_settled INTEGER NOT NULL DEFAULT 0');
+ensureColumn('offers', 'source', "source TEXT NOT NULL DEFAULT 'user'");                  // user | auction (reserve review)
 
 /* ------------------------------------------------------------------ */
 /* Constants                                                           */
@@ -133,6 +166,13 @@ const CURRENCIES = ['AED', 'USD', 'EUR', 'GBP', 'SAR', 'KWD', 'QAR', 'BHD', 'OMR
 const LISTING_STATUSES = ['active', 'sold', 'removed'];
 const OFFER_STATUSES = ['pending', 'accepted', 'rejected', 'withdrawn'];
 const CITIES = ['Abu Dhabi', 'Dubai', 'Sharjah', 'Ajman', 'Umm Al Quwain', 'Ras Al Khaimah', 'Fujairah', 'Al Ain', 'Other GCC'];
+const SALE_TYPES = ['fixed', 'auction'];
+const AUCTION_DURATIONS = [1, 3, 5, 7]; // days
+
+/* UTC datetime string N days (or minutes) from now, SQLite datetime('now') format */
+function futureDate(days = 0, minutes = 0) {
+  return new Date(Date.now() + days * 864e5 + minutes * 6e4).toISOString().slice(0, 19).replace('T', ' ');
+}
 
 /* scrypt password hashing (no external deps) */
 function hashPassword(password) {
@@ -209,7 +249,52 @@ function seed() {
 }
 seed();
 
+/* Seed a couple of demo auctions (runs on existing DBs too — guarded by sale_type check) */
+function seedAuctions() {
+  const has = db.prepare("SELECT COUNT(*) AS c FROM listings WHERE sale_type = 'auction'").get().c;
+  const usersReady = db.prepare('SELECT COUNT(*) AS c FROM users').get().c;
+  if (has > 0 || usersReady === 0) return;
+
+  const ahmed = db.prepare("SELECT id FROM users WHERE email = 'seller@watcheshub.demo'").get();
+  const mariam = db.prepare("SELECT id FROM users WHERE email = 'mariam@watcheshub.demo'").get();
+  const khalid = db.prepare("SELECT id FROM users WHERE email = 'khalid@watcheshub.demo'").get();
+  if (!ahmed || !mariam || !khalid) return;
+
+  const ins = db.prepare(`INSERT INTO listings
+    (user_id, title, brand, year, condition, price, currency, negotiable, description, photos, city, box, papers,
+     sale_type, auction_ends_at, reserve_price)
+    VALUES (@user_id, @title, @brand, @year, @condition, @price, @currency, 0, @description, @photos, @city, @box, @papers,
+     'auction', @auction_ends_at, @reserve_price)`);
+
+  const a1 = ins.run({
+    user_id: ahmed.id, title: 'Tudor Black Bay 58 burgundy — auction', brand: 'Tudor', year: '2023',
+    condition: 'excellent', price: 9500, currency: 'AED',
+    description: '39mm Black Bay 58 on bracelet, full set 2023. Timed auction — name your maximum and Bid4U does the rest.',
+    photos: JSON.stringify(['/images/products/p16.jpg']), city: 'Dubai', box: 1, papers: 1,
+    auction_ends_at: futureDate(2, 30), reserve_price: 10500,
+  }).lastInsertRowid;
+
+  ins.run({
+    user_id: mariam.id, title: 'Omega Seamaster Diver 300M blue — no reserve auction', brand: 'Omega', year: '2020',
+    condition: 'good', price: 9000, currency: 'AED',
+    description: 'Ceramic bezel Seamaster 300M, calibre 8800. No reserve — highest bid wins when the timer runs out.',
+    photos: JSON.stringify(['/images/products/p19.jpg']), city: 'Abu Dhabi', box: 1, papers: 1,
+    auction_ends_at: futureDate(5), reserve_price: 0,
+  });
+
+  // a couple of proxy bids so the auction shows live history (Bid4U style)
+  const insBid = db.prepare('INSERT INTO bids (listing_id, bidder_id, max_amount) VALUES (?, ?, ?)');
+  const insEv = db.prepare("INSERT INTO bid_events (listing_id, bidder_id, amount, kind) VALUES (?, ?, ?, ?)");
+  insBid.run(a1, khalid.id, 10000);
+  insEv.run(a1, khalid.id, 9500, 'bid');   // first bidder opens at the starting price
+  insBid.run(a1, mariam.id, 11000);
+  insEv.run(a1, khalid.id, 10000, 'auto'); // Bid4U defends Khalid up to his 10,000 max...
+  insEv.run(a1, mariam.id, 10500, 'bid');  // ...then Mariam takes the lead one increment above
+  console.log('[db] seeded 2 demo auctions with proxy-bid history');
+}
+seedAuctions();
+
 module.exports = {
   db, DB_PATH, BRANDS, CONDITIONS, CURRENCIES, LISTING_STATUSES, OFFER_STATUSES, CITIES,
-  hashPassword, verifyPassword,
+  SALE_TYPES, AUCTION_DURATIONS, futureDate, hashPassword, verifyPassword,
 };

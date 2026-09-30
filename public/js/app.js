@@ -154,6 +154,49 @@ const I18N = {
     'safety.2': 'Never pay or transfer money in advance to a stranger.',
     'safety.3': 'Check serial numbers, box and papers.',
     'safety.4': 'If a deal feels wrong, walk away — there is always another watch.',
+
+    // auctions — Bid4U-style proxy bidding
+    'sort.ending': 'Ending soon',
+    'form.saletype': 'Sale type', 'form.fixed': 'Fixed price', 'form.auction': 'Auction',
+    'form.starting': 'Starting price', 'form.duration': 'Auction duration',
+    'form.days': '{n} days',
+    'form.reserve': 'Reserve price (optional)',
+    'form.reserve.hint': 'Hidden minimum. If bidding ends below it, you review the high bid as an offer.',
+    'form.auction.hint': 'Buyers name a maximum — the system bids the smallest step needed to keep them on top (Bid4U style). Bids are binding.',
+    'form.auction.locked': 'Bidding has started — starting price and reserve are locked. You can no longer extend the auction.',
+    'form.auction.extend': 'No bids yet — you can extend or restart the timer:',
+    'auc.badge': 'Auction',
+    'auc.current': 'Current bid', 'auc.starting': 'Starting bid',
+    'auc.bids': '{n} bids', 'auc.bid': '{n} bid',
+    'auc.endsin': 'Ends in', 'auc.ended': 'Auction ended',
+    'auc.place': 'Place bid', 'auc.max.ph': 'Your maximum bid',
+    'auc.minnext': 'Enter {n} or more',
+    'auc.hint': 'Bid4U style: enter the maximum you are willing to pay — we automatically bid the smallest increment needed to keep you on top, and stop at your max. Bids are binding and cannot be retracted.',
+    'auc.raise': 'Raise your maximum',
+    'auc.yourmax': 'Your maximum',
+    'auc.winning': 'You are the highest bidder',
+    'auc.outbid': 'You have been outbid — raise your maximum',
+    'auc.outbid.toast': 'You were outbid on «{title}»',
+    'auc.won': 'You won this auction!',
+    'auc.won.hint': 'Message the seller to arrange payment and delivery.',
+    'auc.ended.win': 'Won by {name}',
+    'auc.ended.nobids': 'This auction ended with no bids.',
+    'auc.ended.review': 'Bidding ended below the reserve — the seller is reviewing the high bid.',
+    'auc.reserve.none': 'No reserve', 'auc.reserve.met': 'Reserve met', 'auc.reserve.notmet': 'Reserve not met',
+    'auc.history': 'Bid history', 'auc.history.empty': 'No bids yet — be the first.',
+    'auc.auto': 'auto',
+    'auc.login': 'Sign in to bid',
+    'auc.self': 'This is your auction — watch the bids roll in.',
+    'auc.extended': 'Late bid! The auction was extended by 2 minutes.',
+    'auc.placed.win': 'Bid placed — you are the highest bidder.',
+    'auc.placed.out': 'Bid placed, but you were immediately outbid by a higher maximum.',
+    'auc.count.bidders': '{n} bidders', 'auc.count.bidder': '{n} bidder',
+    'tab.bids': 'My bids',
+    'bids.empty': 'No bids yet. Find an auction and name your maximum.',
+    'bids.active': 'Live auctions', 'bids.finished': 'Finished',
+    'bids.pos.winning': 'Winning', 'bids.pos.outbid': 'Outbid', 'bids.pos.won': 'Won', 'bids.pos.ended': 'Ended',
+    'bids.mymax': 'your max', 'bids.raise': 'Raise bid',
+    'mylist.auction.ends': 'ends', 'mylist.auction.nobids': 'no bids yet',
   },
   ar: {
     'brand.hub': 'هب',
@@ -303,6 +346,49 @@ const I18N = {
     'safety.2': 'لا تدفع أو تحوّل مالاً مقدماً لشخص لا تعرفه.',
     'safety.3': 'تحقق من الأرقام التسلسلية والعلبة والأوراق.',
     'safety.4': 'إذا شعرت أن الصفقة مشبوهة، انسحب — هناك دائماً ساعة أخرى.',
+
+    // المزادات — مزايدة بالوكالة على طريقة Bid4U
+    'sort.ending': 'تنتهي قريباً',
+    'form.saletype': 'نوع البيع', 'form.fixed': 'سعر ثابت', 'form.auction': 'مزاد',
+    'form.starting': 'السعر الافتتاحي', 'form.duration': 'مدة المزاد',
+    'form.days': '{n} أيام',
+    'form.reserve': 'السعر الاحتياطي (اختياري)',
+    'form.reserve.hint': 'حد أدنى مخفي. إذا انتهى المزاد دونه، تصلك أعلى مزايدة كعرض لمراجعته.',
+    'form.auction.hint': 'يحدد المشترون سقفهم الأقصى — والنظام يزايد تلقائياً بأصغر خطوة تُبقيهم في الصدارة (على طريقة Bid4U). المزايدات ملزمة.',
+    'form.auction.locked': 'بدأت المزايدة — السعر الافتتاحي والاحتياطي مقفلان، ولا يمكن تمديد المزاد.',
+    'form.auction.extend': 'لا مزايدات بعد — يمكنك تمديد المؤقت أو إعادة تشغيله:',
+    'auc.badge': 'مزاد',
+    'auc.current': 'المزايدة الحالية', 'auc.starting': 'السعر الافتتاحي',
+    'auc.bids': '{n} مزايدات', 'auc.bid': 'مزايدة واحدة',
+    'auc.endsin': 'ينتهي خلال', 'auc.ended': 'انتهى المزاد',
+    'auc.place': 'زايد', 'auc.max.ph': 'سقفك الأقصى للمزايدة',
+    'auc.minnext': 'أدخل {n} أو أكثر',
+    'auc.hint': 'على طريقة Bid4U: أدخل أقصى مبلغ مستعد لدفعه — نزايد تلقائياً بأصغر خطوة تُبقيك في الصدارة، ونتوقف عند سقفك. المزايدات ملزمة ولا يمكن سحبها.',
+    'auc.raise': 'ارفع سقفك',
+    'auc.yourmax': 'سقفك',
+    'auc.winning': 'أنت أعلى مزايد',
+    'auc.outbid': 'تم تجاوز مزايدتك — ارفع سقفك',
+    'auc.outbid.toast': 'تم تجاوز مزايدتك على «{title}»',
+    'auc.won': 'فزت بهذا المزاد!',
+    'auc.won.hint': 'راسل البائع لترتيب الدفع والتسليم.',
+    'auc.ended.win': 'فاز بها {name}',
+    'auc.ended.nobids': 'انتهى هذا المزاد دون مزايدات.',
+    'auc.ended.review': 'انتهت المزايدة دون السعر الاحتياطي — البائع يراجع أعلى مزايدة.',
+    'auc.reserve.none': 'بلا سعر احتياطي', 'auc.reserve.met': 'تم بلوغ الاحتياطي', 'auc.reserve.notmet': 'لم يُبلغ الاحتياطي',
+    'auc.history': 'سجل المزايدات', 'auc.history.empty': 'لا مزايدات بعد — كن الأول.',
+    'auc.auto': 'تلقائي',
+    'auc.login': 'سجّل الدخول للمزايدة',
+    'auc.self': 'هذا مزادك — تابع المزايدات وهي تصل.',
+    'auc.extended': 'مزايدة أخيرة! تم تمديد المزاد دقيقتين.',
+    'auc.placed.win': 'تمت المزايدة — أنت الأعلى حالياً.',
+    'auc.placed.out': 'تمت المزايدة، لكن سقفاً أعلى تجاوزك فوراً.',
+    'auc.count.bidders': '{n} مزايدون', 'auc.count.bidder': 'مزايد واحد',
+    'tab.bids': 'مزايداتي',
+    'bids.empty': 'لا مزايدات بعد. جد مزاداً وحدد سقفك.',
+    'bids.active': 'مزادات جارية', 'bids.finished': 'منتهية',
+    'bids.pos.winning': 'في الصدارة', 'bids.pos.outbid': 'تم تجاوزك', 'bids.pos.won': 'فزت', 'bids.pos.ended': 'انتهى',
+    'bids.mymax': 'سقفك', 'bids.raise': 'ارفع المزايدة',
+    'mylist.auction.ends': 'ينتهي', 'mylist.auction.nobids': 'لا مزايدات بعد',
   },
 };
 
@@ -311,7 +397,7 @@ const LS_LANG = 'orglux_lang';
 const state = {
   lang: localStorage.getItem(LS_LANG) === 'ar' ? 'ar' : 'en',
   user: null,
-  counts: { unread_messages: 0, pending_offers: 0, answered_offers: 0 },
+  counts: { unread_messages: 0, pending_offers: 0, answered_offers: 0, outbid_count: 0 },
   config: null,
 };
 
@@ -425,7 +511,7 @@ async function refreshMe() {
   try {
     const me = await api('/api/auth/me');
     state.user = me.user;
-    if (me.user) state.counts = { unread_messages: me.unread_messages, pending_offers: me.pending_offers, answered_offers: me.answered_offers };
+    if (me.user) state.counts = { unread_messages: me.unread_messages, pending_offers: me.pending_offers, answered_offers: me.answered_offers, outbid_count: me.outbid_count || 0 };
   } catch { state.user = null; }
   renderAuthArea();
 }
@@ -452,10 +538,12 @@ async function logout() {
 
 /* ---------------- shared rendering ---------------- */
 function listingCard(l) {
+  const isAuc = l.sale_type === 'auction';
   return `
     <a class="product-card" href="#/listing/${l.id}">
       <div class="card-media">
-        ${l.negotiable ? `<span class="card-badge"><span class="badge badge-low">${t('listing.negotiable')}</span></span>` : ''}
+        ${isAuc ? `<span class="card-badge"><span class="badge badge-auction">${t('auc.badge')}</span></span>`
+          : l.negotiable ? `<span class="card-badge"><span class="badge badge-low">${t('listing.negotiable')}</span></span>` : ''}
         ${heartHTML(l)}
         ${l.photos && l.photos.length > 1 ? `<span class="photo-count">${l.photos.length}</span>` : ''}
         <img src="${esc(cover(l))}" alt="${esc(l.title)}" loading="lazy">
@@ -466,12 +554,27 @@ function listingCard(l) {
         <div class="card-brand">${esc(l.brand)}${l.year ? ' · ' + esc(l.year) : ''}</div>
         <div class="card-name">${esc(l.title)}</div>
         <div class="card-meta">
-          <span class="card-price">${fmtPrice(l.price, l.currency)}</span>
+          <span class="card-price">${fmtPrice(isAuc && l.current_price != null ? l.current_price : l.price, l.currency)}</span>
           <span class="cond-badge">${t('cond.' + l.condition)}</span>
         </div>
+        ${isAuc ? `<div class="card-auction-line">${l.bid_count ? t(l.bid_count === 1 ? 'auc.bid' : 'auc.bids', { n: fmtNum(l.bid_count) }) : t('auc.history.empty')} · <span class="auc-countdown-sm" data-ends="${esc(l.auction_ends_at)}">${fmtCountdown(l.auction_ends_at)}</span></div>` : ''}
         <div class="card-seller">${esc(l.seller_name || '')}${l.city ? ` · ${esc(l.city)}` : ''}${l.created_at ? ` · ${timeAgo(l.created_at)}` : ''}</div>
       </div>
     </a>`;
+}
+
+/* countdown: "2d 4h" / "3h 12m" / "04:59" ticking down to auction end */
+function parseDateUTC(d) { return d ? new Date(String(d).replace(' ', 'T').replace(/Z$/, '') + 'Z') : null; }
+function fmtCountdown(endsAt) {
+  const end = parseDateUTC(endsAt);
+  if (!end) return '';
+  const ms = end.getTime() - Date.now();
+  if (ms <= 0) return t('auc.ended');
+  const sec = Math.floor(ms / 1000);
+  if (sec >= 86400) return `${Math.floor(sec / 86400)}d ${Math.floor((sec % 86400) / 3600)}h`;
+  if (sec >= 3600) return `${Math.floor(sec / 3600)}h ${Math.floor((sec % 3600) / 60)}m`;
+  const m = Math.floor(sec / 60), s = sec % 60;
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 function pageHead(titleHTML, sub) {
   return `<div class="page-head"><h1>${titleHTML}</h1>${sub ? `<p>${esc(sub)}</p>` : ''}</div>`;
@@ -559,6 +662,7 @@ async function renderBrowse(root, query) {
     browseState.q = p.get('q') || '';
     browseState.brand = p.get('brand') || 'all';
     browseState.city = p.get('city') || 'all';
+    browseState.sort = p.get('sort') || browseState.sort;
   }
   const cfg = state.config || { brands: [], conditions: [], cities: [] };
   let listings = [];
@@ -591,6 +695,7 @@ async function renderBrowse(root, query) {
         </select>
         <select id="fSort">
           <option value="new" ${browseState.sort === 'new' ? 'selected' : ''}>${t('sort.new')}</option>
+          <option value="ending_soon" ${browseState.sort === 'ending_soon' ? 'selected' : ''}>${t('sort.ending')}</option>
           <option value="price_asc" ${browseState.sort === 'price_asc' ? 'selected' : ''}>${t('sort.price_asc')}</option>
           <option value="price_desc" ${browseState.sort === 'price_desc' ? 'selected' : ''}>${t('sort.price_desc')}</option>
         </select>
@@ -625,6 +730,142 @@ async function renderBrowse(root, query) {
   }));
 }
 
+/* ---------------- auction panel (Bid4U-style proxy bidding) ---------------- */
+let auctionTimers = [];
+function stopAuctionTimers() { auctionTimers.forEach(clearInterval); auctionTimers = []; }
+
+function reserveLabel(auc) {
+  if (!auc || auc.reserve === 'none') return t('auc.reserve.none');
+  return auc.reserve === 'met' ? t('auc.reserve.met') : t('auc.reserve.notmet');
+}
+function aucCountLine(auc) {
+  if (!auc.bid_count) return '';
+  const b = t(auc.bid_count === 1 ? 'auc.bid' : 'auc.bids', { n: fmtNum(auc.bid_count) });
+  const ppl = t(auc.bidder_count === 1 ? 'auc.count.bidder' : 'auc.count.bidders', { n: fmtNum(auc.bidder_count) });
+  return b + ' · ' + ppl;
+}
+function bidHistoryHTML(auc) {
+  if (!auc || !auc.history || !auc.history.length) return `<div class="ap-h-empty">${t('auc.history.empty')}</div>`;
+  return auc.history.map(e => `
+    <div class="ap-h-row${e.mine ? ' mine' : ''}">
+      <span class="ap-h-bidder">${esc(e.bidder)}${e.kind === 'auto' ? ` <span class="ap-auto">${t('auc.auto')}</span>` : ''}</span>
+      <span class="ap-h-amount">${fmtNum(e.amount)}</span>
+      <span class="ap-h-time">${fmtTime(e.created_at)}</span>
+    </div>`).join('');
+}
+
+function auctionPanelHTML(l, auc, mine) {
+  const cur = auc.current_price;
+  const ended = auc.settled || l.status === 'sold';
+  return `
+  <div class="auction-panel" id="aucPanel">
+    <div class="ap-top">
+      <div>
+        <div class="ap-label" id="apPriceLbl">${cur != null ? t('auc.current') : t('auc.starting')}</div>
+        <div class="ap-price" id="apPrice">${fmtPrice(cur != null ? cur : l.price, l.currency)}</div>
+        <div class="ap-sub" id="apBids">${aucCountLine(auc)}</div>
+      </div>
+      <div class="ap-timerbox">
+        <div class="ap-label">${t('auc.endsin')}</div>
+        <div class="ap-timer" id="apTimer">${fmtCountdown(l.auction_ends_at)}</div>
+        <div class="ap-sub reserve-pill" id="apReserve">${reserveLabel(auc)}</div>
+      </div>
+    </div>
+
+    <div id="apBanner">${auctionBannerHTML(l, auc, mine)}</div>
+
+    ${!ended && !mine && state.user ? `
+    <form id="bidForm" class="ap-bidform">
+      <div class="ap-inputwrap">
+        <input type="number" id="bidAmount" min="1" step="any" placeholder="${t('auc.max.ph')}" autocomplete="off">
+        <span class="ap-cur">${esc(l.currency)}</span>
+      </div>
+      <button class="btn btn-terra" type="submit">${auc.my_max_bid ? t('auc.raise') : t('auc.place')}</button>
+    </form>
+    <div class="ap-min" id="apMinHint">${auc.min_next_bid ? t('auc.minnext', { n: fmtNum(auc.min_next_bid) }) : ''}</div>
+    <p class="ap-hint">${t('auc.hint')}</p>` : ''}
+    ${!ended && !mine && !state.user ? `<p class="ap-hint">${t('auc.hint')}</p><div style="margin-top:10px"><a class="btn btn-terra" href="#/login">${t('auc.login')}</a></div>` : ''}
+    ${!ended && mine ? `<div class="ap-self">${t('auc.self')}</div>` : ''}
+
+    <div class="ap-history">
+      <div class="ap-h-title">${t('auc.history')}</div>
+      <div id="apHistory">${bidHistoryHTML(auc)}</div>
+    </div>
+  </div>`;
+}
+
+function auctionBannerHTML(l, auc, mine) {
+  const ended = auc.settled || l.status === 'sold';
+  if (ended) {
+    if (auc.i_am_winner) return `<div class="ap-banner won">${t('auc.won')}<small>${t('auc.won.hint')}</small></div>`;
+    if (l.status === 'sold') return `<div class="ap-banner">${auc.winner ? t('auc.ended.win', { name: esc(auc.winner.name) }) : t('listing.sold')}${auc.sold_price ? ` — ${fmtPrice(auc.sold_price, l.currency)}` : ''}</div>`;
+    if (!auc.bid_count) return `<div class="ap-banner">${t('auc.ended.nobids')}</div>`;
+    return `<div class="ap-banner">${t('auc.ended.review')}</div>`;
+  }
+  if (!state.user || mine) return '';
+  if (auc.i_am_leader) return `<div class="ap-banner winning">${t('auc.winning')}<small>${t('auc.yourmax')}: ${fmtNum(auc.my_max_bid)} ${esc(l.currency)}</small></div>`;
+  if (auc.my_max_bid) return `<div class="ap-banner outbid">${t('auc.outbid')}<small>${t('auc.yourmax')}: ${fmtNum(auc.my_max_bid)} ${esc(l.currency)}</small></div>`;
+  return '';
+}
+
+function wireAuction(root, l, auc0, mine) {
+  let lastLeader = auc0.i_am_leader;
+  let endsAt = l.auction_ends_at;
+
+  // 1s countdown
+  auctionTimers.push(setInterval(() => {
+    const el = document.getElementById('apTimer');
+    if (!el) { stopAuctionTimers(); return; }
+    el.textContent = fmtCountdown(endsAt);
+    const end = parseDateUTC(endsAt);
+    if (end && end.getTime() <= Date.now()) refreshAuction(true);
+  }, 1000));
+
+  async function refreshAuction(settleCheck) {
+    let auc;
+    try { auc = await api(`/api/listings/${l.id}/bids`); }
+    catch { return; }
+    if (auc.ends_at) endsAt = auc.ends_at;
+    // ended → re-render the whole page so banners/buttons swap
+    if (auc.settled || auc.status === 'sold') { stopAuctionTimers(); renderListing(root, l.id); return; }
+    const priceEl = document.getElementById('apPrice');
+    if (!priceEl) { stopAuctionTimers(); return; }
+    priceEl.textContent = fmtPrice(auc.current_price != null ? auc.current_price : l.price, l.currency);
+    document.getElementById('apPriceLbl').textContent = auc.current_price != null ? t('auc.current') : t('auc.starting');
+    document.getElementById('apBids').textContent = aucCountLine(auc);
+    document.getElementById('apReserve').textContent = reserveLabel(auc);
+    document.getElementById('apHistory').innerHTML = bidHistoryHTML(auc);
+    document.getElementById('apBanner').innerHTML = auctionBannerHTML(l, auc, mine);
+    const minEl = document.getElementById('apMinHint');
+    if (minEl) minEl.textContent = auc.min_next_bid ? t('auc.minnext', { n: fmtNum(auc.min_next_bid) }) : '';
+    const submitBtn = document.querySelector('#bidForm button[type="submit"]');
+    if (submitBtn) submitBtn.textContent = auc.my_max_bid ? t('auc.raise') : t('auc.place');
+    if (lastLeader && !auc.i_am_leader && !mine) {
+      toast(t('auc.outbid.toast', { title: l.title }), true);
+      refreshMe();
+    }
+    lastLeader = auc.i_am_leader;
+    if (!settleCheck) { /* periodic */ }
+  }
+  auctionTimers.push(setInterval(() => refreshAuction(false), 8000));
+
+  const bidForm = document.getElementById('bidForm');
+  if (bidForm) bidForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!state.user) { toast(t('auc.login'), true); location.hash = '#/login'; return; }
+    const amount = Number(document.getElementById('bidAmount').value);
+    if (!amount || amount <= 0) { toast(t('err.generic'), true); return; }
+    try {
+      const r = await api(`/api/listings/${l.id}/bids`, { method: 'POST', body: JSON.stringify({ max_amount: amount }) });
+      toast(r.i_am_leader ? t('auc.placed.win') : t('auc.placed.out'), !r.i_am_leader);
+      if (r.extended) setTimeout(() => toast(t('auc.extended')), 600);
+      document.getElementById('bidAmount').value = '';
+      await refreshAuction(false);
+      refreshMe();
+    } catch (err) { toast(err.message, true); }
+  });
+}
+
 /* ---------------- listing detail ---------------- */
 async function renderListing(root, id) {
   let l;
@@ -635,6 +876,8 @@ async function renderListing(root, id) {
   }
   const mine = state.user && state.user.id === l.user_id;
   const sold = l.status === 'sold';
+  const isAuc = l.sale_type === 'auction';
+  const auc = isAuc ? await api(`/api/listings/${id}/bids`).catch(() => null) : null;
   const more = (await api('/api/listings?seller=' + l.user_id).catch(() => [])).filter(x => x.id !== l.id).slice(0, 4);
 
   root.innerHTML = `
@@ -663,9 +906,10 @@ async function renderListing(root, id) {
             </span>
           </div>
           <h1>${esc(l.title)}</h1>
-          <div class="pd-price">${fmtPrice(l.price, l.currency)}</div>
+          ${isAuc && auc ? auctionPanelHTML(l, auc, mine) : `<div class="pd-price">${fmtPrice(l.price, l.currency)}</div>`}
           <div style="display:flex;gap:10px;align-items:center;margin:6px 0 4px;flex-wrap:wrap">
-            ${l.negotiable ? `<span class="tag-neg">${t('listing.negotiable')}</span>` : `<span class="cond-badge">${t('listing.firm')}</span>`}
+            ${isAuc ? `<span class="badge badge-auction">${t('auc.badge')}</span>`
+              : l.negotiable ? `<span class="tag-neg">${t('listing.negotiable')}</span>` : `<span class="cond-badge">${t('listing.firm')}</span>`}
             <span class="cond-badge">${t('cond.' + l.condition)}</span>
             <span class="pd-time">${timeAgo(l.created_at)}</span>
           </div>
@@ -698,6 +942,8 @@ async function renderListing(root, id) {
                   : `<button class="btn btn-ghost btn-small" id="soldBtn">${t('listing.marksold')}</button>`}
               ` : sold ? `
                 <span class="badge badge-out">${t('listing.sold')}</span>
+              ` : isAuc ? `
+                <button class="btn btn-ghost" id="msgBtn">${t('listing.message')}</button>
               ` : `
                 <button class="btn btn-terra" id="offerBtn">${t('listing.makeoffer')}</button>
                 <button class="btn btn-ghost" id="msgBtn">${t('listing.message')}</button>
@@ -723,6 +969,7 @@ async function renderListing(root, id) {
     </section>`;
 
   bindHearts(root);
+  if (isAuc && auc) wireAuction(root, l, auc, mine);
 
   const shareBtn = document.getElementById('shareBtn');
   if (shareBtn) shareBtn.addEventListener('click', async () => {
@@ -858,8 +1105,25 @@ async function renderSell(root, editId) {
             <input name="year" maxlength="12" placeholder="2019" value="${existing ? esc(existing.year) : ''}"></div>
           <div class="field"><label>${t('form.condition')} *</label>
             <select name="condition">${cfg.conditions.map(c => `<option value="${c}" ${existing && existing.condition === c ? 'selected' : ''}>${t('cond.' + c)}</option>`).join('')}</select></div>
-          <div class="field"><label>${t('form.price')} *</label>
-            <input name="price" type="number" min="1" step="any" required value="${existing ? existing.price : ''}"></div>
+          <div class="field"><label>${t('form.saletype')} *</label>
+            <select name="sale_type" id="fSaleType" ${existing ? 'disabled' : ''}>
+              <option value="fixed" ${!existing || existing.sale_type !== 'auction' ? 'selected' : ''}>${t('form.fixed')}</option>
+              <option value="auction" ${existing && existing.sale_type === 'auction' ? 'selected' : ''}>${t('form.auction')}</option>
+            </select></div>
+          <div class="field"><label id="priceLabel">${t('form.price')} *</label>
+            <input name="price" id="fPrice" type="number" min="1" step="any" required value="${existing ? existing.price : ''}" ${existing && existing.sale_type === 'auction' && existing.bid_count > 0 ? 'readonly' : ''}></div>
+          <div class="field auc-only" style="display:none"><label>${t('form.duration')}</label>
+            <select name="auction_days" id="fDuration" ${existing && existing.bid_count > 0 ? 'disabled' : ''}>
+              ${(cfg.auction_durations || [1, 3, 5, 7]).map(d => `<option value="${d}" ${d === 3 ? 'selected' : ''}>${t('form.days', { n: fmtNum(d) })}</option>`).join('')}
+            </select></div>
+          <div class="field auc-only" style="display:none"><label>${t('form.reserve')}</label>
+            <input name="reserve_price" type="number" min="0" step="any" placeholder="0" value="${existing && existing.reserve_price ? existing.reserve_price : ''}" ${existing && existing.sale_type === 'auction' && existing.bid_count > 0 ? 'readonly' : ''}>
+            <small class="field-hint">${t('form.reserve.hint')}</small></div>
+          <div class="field full auc-only" style="display:none">
+            <small class="field-hint" id="aucHint">${t('form.auction.hint')}</small>
+            ${existing && existing.sale_type === 'auction'
+              ? `<small class="field-hint" style="display:block;margin-top:6px">${existing.bid_count > 0 ? t('form.auction.locked') : t('form.auction.extend')}</small>` : ''}
+          </div>
           <div class="field"><label>${t('form.currency')}</label>
             <select name="currency">${cfg.currencies.map(c => `<option ${existing && existing.currency === c ? 'selected' : c === 'AED' && !existing ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
           <div class="field"><label>${t('form.city')}</label>
@@ -874,7 +1138,7 @@ async function renderSell(root, editId) {
               <option value="1" ${existing && existing.papers ? 'selected' : ''}>${t('yes')}</option>
               <option value="0" ${existing && !existing.papers ? 'selected' : ''}>${t('no')}</option>
             </select></div>
-          <div class="field" style="justify-content:end">
+          <div class="field" id="negWrap" style="justify-content:end">
             <label class="check-line"><input type="checkbox" name="negotiable" ${!existing || existing.negotiable ? 'checked' : ''}> <span>${t('form.negotiable')}</span></label></div>
           <div class="field full"><label>${t('form.description')}</label>
             <textarea name="description" maxlength="2000">${existing ? esc(existing.description) : ''}</textarea></div>
@@ -916,18 +1180,34 @@ async function renderSell(root, editId) {
     input.value = '';
   });
 
+  // sale type toggle — show auction fields, swap the price label
+  const saleTypeSel = document.getElementById('fSaleType');
+  function syncSaleType() {
+    const isAuc = saleTypeSel.value === 'auction';
+    document.querySelectorAll('.auc-only').forEach(el => { el.style.display = isAuc ? '' : 'none'; });
+    document.getElementById('priceLabel').textContent = isAuc ? t('form.starting') + ' *' : t('form.price') + ' *';
+    const neg = document.getElementById('negWrap');
+    if (neg) neg.style.display = isAuc ? 'none' : '';
+  }
+  saleTypeSel.addEventListener('change', syncSaleType);
+  syncSaleType();
+
   document.getElementById('sellForm').addEventListener('submit', async e => {
     e.preventDefault();
     const fd = new FormData(e.target);
+    const isAuc = existing ? existing.sale_type === 'auction' : saleTypeSel.value === 'auction';
     const body = {
       title: String(fd.get('title') || '').trim(),
       brand: fd.get('brand'), year: String(fd.get('year') || '').trim(),
       condition: fd.get('condition'), price: Number(fd.get('price')),
-      currency: fd.get('currency'), negotiable: fd.get('negotiable') ? 1 : 0,
+      currency: fd.get('currency'), negotiable: isAuc ? 0 : (fd.get('negotiable') ? 1 : 0),
       description: String(fd.get('description') || '').trim(),
       city: fd.get('city'),
       box: fd.get('box') === '1' ? 1 : 0,
       papers: fd.get('papers') === '1' ? 1 : 0,
+      sale_type: existing ? existing.sale_type : saleTypeSel.value,
+      auction_days: Number(fd.get('auction_days')) || 3,
+      reserve_price: isAuc ? (Number(fd.get('reserve_price')) || 0) : 0,
     };
     if (!body.title || !body.price) { toast(t('err.generic'), true); return; }
     if (existingPhotos.length + sellPhotos.length === 0) { toast(t('sell.photos'), true); return; }
@@ -1008,7 +1288,7 @@ function renderRegister(root) {
 }
 
 /* ---------------- account ---------------- */
-const ACCOUNT_TABS = ['listings', 'received', 'sent', 'messages', 'favorites'];
+const ACCOUNT_TABS = ['listings', 'received', 'sent', 'messages', 'bids', 'favorites'];
 
 async function renderAccount(root, tab) {
   if (!state.user) {
@@ -1020,6 +1300,7 @@ async function renderAccount(root, tab) {
   const badges = {
     received: state.counts.pending_offers,
     messages: state.counts.unread_messages,
+    bids: state.counts.outbid_count,
   };
   root.innerHTML = `
     ${pageHead(t('account.title'))}
@@ -1036,7 +1317,44 @@ async function renderAccount(root, tab) {
   else if (tab === 'received') await renderOffersReceived(body);
   else if (tab === 'sent') await renderOffersSent(body);
   else if (tab === 'messages') await renderConversations(body);
+  else if (tab === 'bids') await renderMyBids(body);
   else if (tab === 'favorites') await renderFavorites(body);
+}
+
+/* ---------------- my bids (auctions) ---------------- */
+function bidRowHTML(r) {
+  const pos = r.position;
+  const live = pos === 'winning' || pos === 'outbid';
+  return `
+  <div class="offer-card">
+    <a href="#/listing/${r.id}"><img src="${esc(cover(r))}" alt=""></a>
+    <div>
+      <a href="#/listing/${r.id}"><div class="oc-title">${esc(r.title)}</div></a>
+      <div class="oc-meta">${t('auc.current')}: <strong>${fmtPrice(r.current_price != null ? r.current_price : r.price, r.currency)}</strong>
+        · ${t('bids.mymax')}: ${fmtNum(r.max_amount)} ${esc(r.currency)} · ${esc(r.seller_name)}</div>
+      <div class="oc-meta" style="margin-top:6px">
+        ${live ? `${t('auc.endsin')} <span class="auc-countdown-sm">${fmtCountdown(r.auction_ends_at)}</span>` : fmtDate(r.bid_at)}
+      </div>
+    </div>
+    <div class="offer-side">
+      <span class="status-pill bid-pos-${pos}">${t('bids.pos.' + pos)}</span>
+      ${pos === 'outbid' ? `<a class="btn btn-terra btn-small" href="#/listing/${r.id}">${t('bids.raise')}</a>` : ''}
+      ${pos === 'won' ? `<a class="btn btn-ghost btn-small" href="#/listing/${r.id}">${t('listing.message')}</a>` : ''}
+    </div>
+  </div>`;
+}
+
+async function renderMyBids(body) {
+  const rows = await api('/api/my/bids').catch(() => []);
+  if (!rows.length) {
+    body.innerHTML = `<div class="empty-state"><span class="serif">⌛</span>${t('bids.empty')}</div>`;
+    return;
+  }
+  const active = rows.filter(r => r.position === 'winning' || r.position === 'outbid');
+  const finished = rows.filter(r => r.position === 'won' || r.position === 'ended');
+  body.innerHTML =
+    (active.length ? `<div class="bids-sub">${t('bids.active')}</div>${active.map(bidRowHTML).join('')}` : '') +
+    (finished.length ? `<div class="bids-sub" style="margin-top:26px">${t('bids.finished')}</div>${finished.map(bidRowHTML).join('')}` : '');
 }
 
 async function renderFavorites(body) {
@@ -1061,9 +1379,10 @@ async function renderMyListings(body) {
       <a href="#/listing/${l.id}"><img src="${esc(cover(l))}" alt=""></a>
       <div>
         <a href="#/listing/${l.id}"><div class="oc-title">${esc(l.title)}</div></a>
-        <div class="oc-meta">${fmtPrice(l.price, l.currency)} · ${t('cond.' + l.condition)} · ${fmtDate(l.created_at)}</div>
+        <div class="oc-meta">${fmtPrice(l.sale_type === 'auction' && l.current_price != null ? l.current_price : l.price, l.currency)} · ${t('cond.' + l.condition)} · ${fmtDate(l.created_at)}</div>
         <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap">
-          ${l.status === 'sold' ? `<span class="status-pill status-offer-withdrawn">${t('listing.sold')}</span>` : `<span class="status-pill status-offer-accepted">${t('listing.negotiable') in l ? '' : ''}${l.status === 'active' ? (state.lang === 'ar' ? 'نشط' : 'Active') : l.status}</span>`}
+          ${l.status === 'sold' ? `<span class="status-pill status-offer-withdrawn">${t('listing.sold')}</span>` : `<span class="status-pill status-offer-accepted">${l.status === 'active' ? (state.lang === 'ar' ? 'نشط' : 'Active') : l.status}</span>`}
+          ${l.sale_type === 'auction' ? `<span class="status-pill status-offer-pending">${t('auc.badge')} · ${l.bid_count ? t(l.bid_count === 1 ? 'auc.bid' : 'auc.bids', { n: fmtNum(l.bid_count) }) : t('mylist.auction.nobids')} · ${t('mylist.auction.ends')} ${fmtCountdown(l.auction_ends_at)}</span>` : ''}
           ${l.pending_offers ? `<span class="status-pill status-offer-pending">${t('mylist.offers', { n: l.pending_offers })}</span>` : ''}
         </div>
       </div>
@@ -1274,6 +1593,7 @@ function parseHash() {
 
 async function route() {
   stopPolling();
+  stopAuctionTimers();
   const { parts, query } = parseHash();
   const root = document.getElementById('app');
 

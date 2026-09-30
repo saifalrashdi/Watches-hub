@@ -862,3 +862,63 @@ h1, h2, h3, .serif { font-family: var(--serif); font-weight: 500; }
 }
 .report-link:hover { color: #b4431c; }
 [dir="rtl"] .heart-btn svg, [dir="rtl"] .photo-count { direction: ltr; }
+
+
+/* ---------------- auctions (Bid4U-style bidding) ---------------- */
+.badge-auction { background: var(--ink); color: var(--gold); letter-spacing: .08em; text-transform: uppercase; }
+.card-auction-line { margin-top: 6px; font-size: 12px; color: var(--ink-faint); letter-spacing: .04em; }
+.auc-countdown-sm { color: var(--terra); font-weight: 600; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: embed; }
+
+.auction-panel {
+  border: 1px solid var(--beige-line); background: var(--cream-deep);
+  padding: 20px 22px; margin: 14px 0 10px;
+}
+.ap-top { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; align-items: flex-start; }
+.ap-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+.ap-price { font-family: "Cormorant Garamond", "Amiri", serif; font-size: clamp(30px, 4vw, 42px); font-weight: 600; color: var(--terra); line-height: 1.1; margin-top: 4px; }
+.ap-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+.ap-timerbox { text-align: end; }
+[dir="rtl"] .ap-timerbox { text-align: start; }
+.ap-timer {
+  font-size: 26px; font-weight: 600; color: var(--ink);
+  font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: embed; margin-top: 4px;
+}
+.reserve-pill { display: inline-block; border: 1px solid var(--beige-line); border-radius: 999px; padding: 3px 12px; background: var(--cream); }
+
+.ap-banner { margin-top: 16px; padding: 11px 14px; border: 1px solid var(--beige-line); background: var(--cream); font-size: 13.5px; font-weight: 600; }
+.ap-banner small { display: block; font-weight: 400; color: var(--ink-soft); margin-top: 3px; }
+.ap-banner.winning { border-color: rgba(63, 107, 42, .5); background: rgba(63, 107, 42, .07); color: #3f6b2a; }
+.ap-banner.outbid { border-color: rgba(180, 67, 28, .5); background: rgba(180, 67, 28, .07); color: var(--terra-deep); }
+.ap-banner.won { border-color: var(--gold); background: rgba(156, 122, 60, .1); color: var(--ink); font-size: 15px; }
+.ap-self { margin-top: 14px; font-size: 13px; color: var(--ink-faint); font-style: italic; }
+
+.ap-bidform { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.ap-inputwrap { position: relative; flex: 1; min-width: 180px; }
+.ap-inputwrap input { width: 100%; padding-inline-end: 54px; }
+.ap-cur { position: absolute; inset-inline-end: 14px; top: 50%; transform: translateY(-50%); font-size: 12px; letter-spacing: .08em; color: var(--ink-faint); }
+.ap-min { font-size: 12.5px; color: var(--terra-deep); margin-top: 7px; font-weight: 600; }
+.ap-hint { font-size: 12px; color: var(--ink-faint); line-height: 1.65; margin-top: 10px; }
+
+.ap-history { margin-top: 18px; border-top: 1px solid var(--beige-line); padding-top: 14px; }
+.ap-h-title { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+.ap-h-empty { font-size: 13px; color: var(--ink-faint); font-style: italic; padding: 6px 0; }
+.ap-h-row { display: flex; align-items: baseline; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--beige-line); font-size: 13.5px; }
+.ap-h-row:last-child { border-bottom: none; }
+.ap-h-row.mine .ap-h-bidder { color: var(--terra); font-weight: 600; }
+.ap-h-bidder { flex: 1; }
+.ap-auto { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--beige-line); border-radius: 999px; padding: 1px 7px; color: var(--ink-faint); margin-inline-start: 5px; }
+.ap-h-amount { font-weight: 600; font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: embed; }
+.ap-h-time { font-size: 11.5px; color: var(--ink-faint); }
+
+.field-hint { font-size: 12px; color: var(--ink-faint); margin-top: 6px; line-height: 1.6; }
+
+.bids-sub { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 18px 0 12px; border-bottom: 1px solid var(--beige-line); padding-bottom: 8px; }
+.bid-pos-winning { background: rgba(63, 107, 42, .1); color: #3f6b2a; }
+.bid-pos-outbid { background: rgba(180, 67, 28, .12); color: var(--terra-deep); }
+.bid-pos-won { background: rgba(156, 122, 60, .16); color: var(--ink); }
+.bid-pos-ended { background: rgba(55, 16, 9, .06); color: var(--ink-faint); }
+
+@media (max-width: 640px) {
+  .ap-top { flex-direction: column; }
+  .ap-timerbox { text-align: start; }
+}
